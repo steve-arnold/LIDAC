@@ -26,7 +26,7 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	HWND hDialog = 0;
 	// need this for spinner control under windows XP
-	INITCOMMONCONTROLSEX cc;
+	INITCOMMONCONTROLSEX cc{};
 	cc.dwSize = sizeof(INITCOMMONCONTROLSEX);
 	cc.dwICC = ICC_BAR_CLASSES | ICC_UPDOWN_CLASS | ICC_USEREX_CLASSES;
 	InitCommonControlsEx(&cc);
@@ -65,8 +65,8 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	return (int)msg.wParam;
 }
 
-Controller::Controller(HWND hwnd)
-	: m_eSpin(hwnd, IDC_EDIT1),
+Controller::Controller(HWND hwnd): 
+	m_eSpin(hwnd, IDC_EDIT1),
 	m_eSignal(hwnd, IDC_EDIT2),
 	m_bSeize(hwnd, IDC_SEIZE),
 	m_bRelease(hwnd, IDC_RELEASE),
@@ -80,8 +80,8 @@ Controller::Controller(HWND hwnd)
 	m_cSpinner.setLimits(10, 1); // set spinner box limits
 	m_cDropdown.addStrings();
 
-	HFONT hfFont = (HFONT)GetStockObject(DEFAULT_GUI_FONT);
-	SendMessage(m_eSignal.Hwnd(), WM_SETFONT, reinterpret_cast<WPARAM>(hfFont), MAKELPARAM(FALSE, 0));
+	HFONT hFont = (HFONT)GetStockObject(DEFAULT_GUI_FONT);
+	SendMessage(m_eSignal.Hwnd(), WM_SETFONT, reinterpret_cast<WPARAM>(hFont), MAKELPARAM(FALSE, 0));
 }
 
 void Controller::Command(HWND hwnd, int controlID, int command)
