@@ -1,7 +1,6 @@
 #pragma once
 
 #include <windows.h>
-#include "resource.h"
 
 class SimpleControl
 {
@@ -11,20 +10,20 @@ public:
 	{
 		Enable(initialState);
 	}
-	void SetFocus()
+	void SetFocus() const
 	{
 		::SetFocus(hwnd);
 	}
-	void Show(BOOL state)
+	void Show(BOOL state) const
 	{
 		int show = state ? SW_SHOW : SW_HIDE;
 		::ShowWindow(hwnd, show);
 	}
-	void Enable(BOOL state)
+	void Enable(BOOL state) const
 	{
 		::EnableWindow(hwnd, state);
 	}
-	BOOL IsVisible()
+	BOOL IsVisible() const
 	{
 		return (::IsWindowVisible(hwnd));
 	}

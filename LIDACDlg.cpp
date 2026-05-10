@@ -1,4 +1,13 @@
-#include "stdafx.h"
+#include "LIDACDlg.h"
+#include "LIDAC_add.h"
+#include "resource.h"
+#include <Windows.h>
+#include <string>
+#include <sstream>
+#include <ios>
+
+#include <new.h>
+#include <sal.h>
 
 using namespace std;
 

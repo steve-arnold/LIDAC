@@ -1,8 +1,8 @@
 #pragma once
 
-#include <sstream>
 #include <commctrl.h>
-#include "resource.h"
+#include <Windows.h>
+#include <string>
 #include "controls.h"
 
 static std::string licenseTags[] =
